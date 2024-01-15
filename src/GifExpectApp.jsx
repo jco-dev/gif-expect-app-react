@@ -8,8 +8,10 @@ export const GifExpectApp = () => {
     "Samurai X",
   ]);
 
-  const onAddCategory = ( newCategory) => {
+  const onAddCategory = (newCategory) => {
     // console.log(newCategory);
+    if(categories.includes(newCategory)) return;
+    
     setCategories([newCategory, ...categories]);
     // setCategories(cats => [...cats, 'Valorant']);
   }
@@ -29,9 +31,11 @@ export const GifExpectApp = () => {
 
 
       <ol>
-        {categories.map((category) => {
-          return <li key={category}>{category}</li>;
-        })}
+        {
+          categories.map((category) => {
+            return <li key={category}>{category}</li>;
+          })
+        }
       </ol>
     </>
   );
