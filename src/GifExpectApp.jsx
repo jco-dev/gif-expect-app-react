@@ -8,10 +8,11 @@ export const GifExpectApp = () => {
     "Samurai X",
   ]);
 
-    const handleAdd = () => {
-        setCategories(['Valorant', ...categories ]);
-        // setCategories(cats => [...cats, 'Valorant']);
-    }
+  const onAddCategory = ( newCategory) => {
+    // console.log(newCategory);
+    setCategories([newCategory, ...categories]);
+    // setCategories(cats => [...cats, 'Valorant']);
+  }
 
   return (
     <>
@@ -19,7 +20,10 @@ export const GifExpectApp = () => {
       <h1>GifExpectApp</h1>
 
       {/* input */}
-      <AddCategory setCategories={setCategories} />
+      <AddCategory
+        // setCategories={setCategories} 
+        onNewCategory={(event) => onAddCategory(event)}
+      />
 
       {/* Listado Gifs */}
 
