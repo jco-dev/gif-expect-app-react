@@ -1,17 +1,16 @@
 import { useState } from "react";
 import { AddCategory } from "./components/AddCategory";
+import { GifGrid } from "./components/GifGrid";
 
 export const GifExpectApp = () => {
   const [categories, setCategories] = useState([
     "One Punch",
-    "Dragon Ball",
-    "Samurai X",
   ]);
 
   const onAddCategory = (newCategory) => {
     // console.log(newCategory);
-    if(categories.includes(newCategory)) return;
-    
+    if (categories.includes(newCategory)) return;
+
     setCategories([newCategory, ...categories]);
     // setCategories(cats => [...cats, 'Valorant']);
   }
@@ -27,16 +26,12 @@ export const GifExpectApp = () => {
         onNewCategory={(event) => onAddCategory(event)}
       />
 
-      {/* Listado Gifs */}
-
-
-      <ol>
-        {
-          categories.map((category) => {
-            return <li key={category}>{category}</li>;
-          })
-        }
-      </ol>
+      {
+        categories.map((category) => (
+          <GifGrid key={category} category={category} />
+        ))
+      }
+      
     </>
   );
 };
